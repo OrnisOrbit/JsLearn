@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Task 07</title>
+    </head>
+
+    <body>
+        <p id="message"></p>
+        <script>
+            let month = parseInt(prompt("Введите номер месяца"));
+            let year = parseInt(prompt("Введите год"));
+
+            let message = "";
+
+            switch (month) {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    message = 31;
+                    break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    message = 30;
+                    break;
+                case 2:
+                    if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
+                        message = 29;
+                    } else {
+                        message = 28;
+                    };
+                 // message = year % 4 === 0 && year % 100 !== 0 || year % 400 === 0 ? 29 : 28;
+
+                    break;
+                default:
+                    message = "Неверный номер";
+                    break;
+
+            };
+
+            document.querySelector("#message").textContent = message;
+        </script>
+
+
+
+
+
+    </body>
+
+    </html>
+</body>
+
+</html>

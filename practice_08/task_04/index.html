@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Task_04</title>
+</head>
+
+<body>
+    <p id="message"></p>
+    <script>
+        function perfomSubstractionTest(num1, num2) {
+            const answer = parseInt(prompt(`${num1} - ${num2} = ?`));
+            if (num1 - num2 === answer) {
+                correctAnswers++;
+            } else {
+                incorrectAnswers++;
+            }
+        }
+
+        function perfomAdditionTest(num1, num2) {
+            const answer = parseInt(prompt(`${num1} + ${num2} = ?`));
+            if (num1 + num2 === answer) {
+                correctAnswers++;
+            } else {
+                incorrectAnswers++;
+            }
+        }
+
+        const testType = prompt("Введите тип теста (+/-): ");
+        const testToPerform = testType === "+" ? perfomAdditionTest : perfomSubstractionTest;
+        const testCount = parseInt(prompt("Введите количество тестов: "));
+
+        const min = -10;
+        const max = 10;
+
+        let correctAnswers = 0;
+        let incorrectAnswers = 0;
+
+        for (let i = 0; i < testCount; i++) {
+            const num1 = Math.trunc(min + Math.random() * (max - min + 1));
+            const num2 = Math.trunc(min + Math.random() * (max - min + 1));
+            testToPerform(num1, num2);
+        }
+
+        document.querySelector("#message").innerHTML =
+            `Количество правильных ответов: ${correctAnswers}<br>` +
+            `Количество неправильных ответов: ${incorrectAnswers}`
+    </script>
+
+</body>
+
+</html>

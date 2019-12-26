@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Drawing Sandbox</title>
+        <style>
+            body { margin: 0; overflow: hidden; }
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                function startDrawing() {
+                    const canvas = document.getElementById('canvas');
+                    const w = canvas.width  = window.innerWidth;
+                    const h = canvas.height = window.innerHeight;
+                    draw(canvas.getContext('2d'), w, h);
+                }
+                window.addEventListener('resize', startDrawing); startDrawing();
+            })
+        </script>
+    </head>
+    <body>
+        <canvas id="canvas"></canvas>
+        <script>
+            function draw(ctx, w, h) {
+                ctx.fillStyle = 'black';
+                ctx.beginPath();
+                ctx.rect(0, 0, w, h);
+                ctx.fill();
+                // TODO: добавить код рисования
+                const count = 400;
+                const x = w/2.0;
+                const y = h / 2.0;
+                let radius = Math.min(w,h)/2;
+                let red = 0;
+                const radiusStep = radius/count;
+                const redStep = 255/count;
+
+
+                for (let i = 0;i<count;i++){
+                ctx.fillStyle = `rgb(${red},0,0)`;
+                ctx.beginPath();
+                ctx.arc(x, y, radius,0,2 * Math.PI);
+                ctx.fill();
+
+
+                radius-=radiusStep;
+                red+= redStep;
+            }
+        }
+        </script>
+    </body>
+</html>
+

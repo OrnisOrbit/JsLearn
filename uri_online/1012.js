@@ -1,0 +1,16 @@
+const input = require('fs').readFileSync('/dev/stdin', 'utf8');
+const lines = input.split('\n');
+var a = parseFloat(lines[0]);
+var b = parseFloat(lines[1]);
+var c = parseFloat(lines[2]);
+const pi = 3.14159;
+var s = 1 / 2 * a * c;
+var circ = pi * c * c;
+var trap = (a + b) / 2 * c;
+var quad = b * b;
+var retan = a * b;
+console.log(`TRIANGULO: ${s.toFixed(3)}`);
+console.log(`CIRCULO: ${circ.toFixed(3)}`);
+console.log(`TRAPEZIO´: ${trap.toFixed(3)}`);
+console.log(`QUADRADO: ${quad.toFixed(3)}`);
+console.log(`RETANGULO: ${retan.toFixed(3)}`);

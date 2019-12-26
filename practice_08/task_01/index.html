@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 01</title>
+</head>
+
+<body>
+    <p id="message"></p>
+    <!-- <input type="number" id="num1">
+    <input type="number" id="num2">
+    <input type="number" id="num3"> -->
+
+    <script>
+        function abs(num) {
+
+            if (num < 0) {
+                num *= -1;
+            };
+            return num;
+        }
+        const coordinate = parseInt(prompt("введите исходную точку"));//document.querySelector("#num1").value;
+        const point1 = parseInt(prompt("введите первую точку"));//document.querySelector("#num2").value;
+        const point2 = parseInt(prompt("введите вторую точку"));//document.querySelector("#num3").value;
+        let distance1 = abs(coordinate - point1);
+        let distance2 = abs(coordinate - point2);
+        let message;
+
+
+        if (distance1 < distance2) {
+            message = `первая точка ближе второй. Дистанция равна ${distance1}`
+        } else if (distance2 < distance1) {
+            message = `вторая точка ближе к пеервой. Дистанция равна ${distance2}`
+        } else {
+            message = `точки на равной дистанции. Дистанция равна ${distance1}`
+        };
+
+
+        document.querySelector("#message").textContent = message;
+    </script>
+</body>
+
+</html>

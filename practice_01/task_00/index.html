@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>©NASA</title>
+    <style>
+        img {
+            width: 500px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Привет, Мир!</p>
+    <img src="./img/earth.jpg"
+        alt="earth">
+    <p>&copy;
+        <a href="https://www.nasa.gov/"> NASA</a>
+    </p>
+    <p id="in"></p>
+    <script>
+        console.log("Привет, Мир!")
+        document.getElementsByTagName("p")[2].innerHTML = "**************<br>*Привет, Мир!*<br>**************";
+        var name = prompt("Как Вас зовут?");
+        alert("ПРИВЕТ " + name);
+        var a = prompt("Число 1");
+        var b = prompt("Число 2");
+        var num1 = parseInt(a);
+        var num2 = parseInt(b);
+        summ = num1 + num2;
+
+        alert("сумма чисел " + summ);
+    </script>
+</body>
+
+</html>

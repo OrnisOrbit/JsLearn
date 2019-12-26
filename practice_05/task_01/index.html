@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="message"></p>
+    <script>
+        // const number = parseFloat(prompt("Введите вещественное число"));
+        // let result = number;
+        // if(number<0) {
+        //     result = -result;}
+        //     document.querySelector ("#message").textContent = `|${number}| = ${result}`;
+
+        let a = parseFloat(prompt("Введите значение 1"));
+        let b = parseFloat(prompt("Введите значение 2"));
+
+        let message = `первое число ${a} больше`;
+        if(a==b){
+            alert ("числа равны")
+        }
+        else if (a > b) {
+            alert(message);
+        }
+        
+        else {
+            message = `второе число ${b} больше`
+            alert(message);
+        };
+        
+       
+    </script>
+</body>
+
+</html>

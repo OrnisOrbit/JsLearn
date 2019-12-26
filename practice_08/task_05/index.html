@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="message"></p>
+    <script>
+        const input = prompt("Введите набор чисел").trim();
+        const parts = input.split(" ");
+        if (input.length == 0) {
+            message = "нет данных"
+        } else {
+
+            //const sum=
+            //parts = parts.map(item => parseInt(item));
+            //.filter((_, i) => i%2 ===0)
+            //.map(item => item**2)
+            //reduce(sum,next => sum+next);
+
+
+            for (let i = 0; i < parts.length; i++) {
+                parts[i] = parseInt(parts[i]);
+            };
+            let summ = 0;
+            for (let i = 0; i < parts.length; i++) {
+                if (i % 2 === 0) {
+                    summ += parts[i] ** 2;
+
+                }
+
+            }
+            message = `сумма квадрата чисел на чётных позициях равна = ${summ}`;
+        }
+
+        document.querySelector("#message").textContent = message;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task#6</title>
+</head>
+
+<body>
+    <p></p>
+    <script>
+        const min = parseInt(prompt("введите минимальное число"));
+        const max = parseInt(prompt("введите максимальное число"));
+        // const random = Math.random()* max;
+        // const min = 3;
+        // const max = 5;
+        const x = Math.trunc(min + Math.random() * (max - min + 1));
+        // console.log(x);
+        // const min = 0;
+        // const max = 5;
+        // const x = Math.trunc(min + Math.random() * max);
+        console.log(x);
+
+        document.getElementsByTagName("p")[0].textContent = `Случайное число от ${min} до ${max} : ${x}`;
+    </script>
+
+</body>
+
+</html>

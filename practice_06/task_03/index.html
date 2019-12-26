@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="summ"></p>
+    <p id="message"></p>
+
+    <script>
+
+        // const testCount = parseInt(prompt("Введите количество тестов"));
+        const testCount = parseInt(prompt("Введите количество тестов: "))
+        let correctAnswers = 0;
+        let incorectAnsvers = 0;
+
+
+        // let i = 0;
+        // while(i++ <testCount){
+
+        for (let i = 0; i < testCount; i++) {
+
+            const min = 0;
+            const max = 10;
+            const x1 = Math.trunc(min + Math.random() * (max - min + 1));
+            const x2 = Math.trunc(min + Math.random() * (max - min + 1));
+            let answer = parseInt(prompt(`Найдите сумму ${x1} + ${x2}`));
+            if (answer === x1 + x2) {
+                correctAnswers++
+            } else {
+                incorectAnsvers++
+            }
+            
+
+        };
+        document.querySelector("#message").innerHTML =
+            `Количество правильных ответов ${correctAnswers}<br>` +
+            `Количество неправильных ответов ${incorectAnsvers}`
+    </script>
+</body>
+
+</html>

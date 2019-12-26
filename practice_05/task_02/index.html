@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task 02</title>
+</head>
+
+<body>
+    <p id="message"></p>
+    <script>
+        // let num = 0;
+        // const zero = 0.1;
+        // num = num + zero + zero + zero + zero + zero + zero + zero + zero + zero + zero;
+        // let num1 = Math.abs(num - 1);
+        // // num = 10 * zero;
+        
+        // if (num === 1.0) {
+        //     message = "Равны";
+        // } else {
+        //     message = "Не равны"
+        // };
+        
+        let message;
+
+
+        let number1 = parseFloat( prompt("Число 1"));
+        let number2 = parseFloat( prompt("Число 2"));
+        if (number1>number2) {
+            message = `первое число ${number1} больше второго ${number2}`
+        }else{
+            if(number1<number2){
+            message = `первое число ${number1} Меньше второго ${number2}`
+        }else{
+           message= `Числа равны`
+        }
+        };
+
+
+        document.querySelector("#message").textContent = message;
+    </script>
+
+</body>
+
+</html>

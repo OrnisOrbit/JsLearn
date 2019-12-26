@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Animation Sandbox</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('canvas');
+            const w = canvas.width = window.innerWidth;
+            const h = canvas.height = window.innerHeight;
+            setup(canvas.getContext('2d'), w, h);
+        });
+    </script>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        let initialAngle = 0.3;
+
+        function star(rays, ctx, w, h, x, y, radius1, radius2, color) {
+
+
+
+            const lineWidht = 8;
+
+
+            let angle = -initialAngle;
+            let angleDelta = 2 * Math.PI / rays;
+
+            ctx.lineWidht = lineWidht;
+            ctx.strokeStyle = color;
+
+            let prevEndX = x + Math.cos(angle - angleDelta) * radius2;
+            let prevEndY = y + Math.sin(angle - angleDelta) * radius2;
+
+            for (let i = 0; i < rays; i++) {
+                const radius = i % 2 === 0 ? radius1 : radius2;
+                let endX = x + Math.cos(angle) * radius;
+                let endY = y + Math.sin(angle) * radius;
+
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.lineTo(endX, endY);
+                ctx.lineTo(prevEndX, prevEndY)
+                ctx.stroke();
+
+                angle += angleDelta;
+                prevEndX = endX;
+                prevEndY = endY;
+            }
+        }
+
+        function setup(ctx, w, h) {
+            // TODO: добавить код инициализации
+            window.requestAnimationFrame(timestamp => draw(ctx, w, h, timestamp));
+        }
+        function draw(ctx, w, h, timestamp) {
+            if (w != window.innerWidth || h != window.innerHeight) {
+                w = canvas.width = window.innerWidth;
+                h = canvas.height = window.innerHeight;
+            }
+            ctx.fillStyle = 'rgba(0,0,0,0.1';
+            ctx.beginPath();
+            ctx.rect(0, 0, w, h);
+            ctx.fill();
+        
+            // TODO: добавить код рисования
+            // const shiftX = 100;
+            // const shiftY = 200;
+            star(8, ctx, w, h, w / 2.0, h / 2.0, 170, 40, "white");
+            // star(14,ctx, w, h, w / 2.0 - shiftX, h / 2.0 - shiftY,80,20,"yellow");
+            // star(8,ctx, w, h, w / 2.0 + shiftX, h / 2.0 - shiftY,80,20,"purple");
+            // star(16,ctx, w, h, w / 2.0 - shiftX, h / 2.0 + shiftY,80,20,"green");
+
+            const stars = 8;
+            const centerX = w / 2;
+            const centerY = h / 2;
+            const radius = 200;
+            let angle = -0.5;
+            const angleDelta = 2 * Math.PI / stars;
+
+            for (let i = 0; i<stars; i++) {
+                const x = centerX + Math.cos(angle) + radius;
+                const y = centerY + Math.sin(angle) + radius;
+                star(24, ctx, w, h, w / 2.0, h / 2.0, 170, 40, "red");
+                angle += angleDelta
+            };
+            initialAngle += 0.01;
+
+            window.requestAnimationFrame(timestamp => draw(ctx, w, h, timestamp));
+        }
+    </script>
+</body>
+
+</html>

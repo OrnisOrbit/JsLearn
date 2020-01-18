@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Task02</title>
+</head>
+
+<body>
+    <p id="message"></p>
+
+    <script>
+        const year = parseInt(prompt("Введите год"));
+        const month = parseInt(prompt("Введите месяц"));
+
+        const days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        let result;
+        if (month >= 1 && month <= 12) {
+            result = days[month - 1];
+            if (
+                (month === 2 && year % 4 === 0 && year % 100 !== 0) ||
+                year % 400 === 0
+            ) {
+                result += 1;
+            }
+        } else {
+            result = "неверный месяц";
+        }
+        document.querySelector("#message").textContent = result;
+    </script>
+</body>
+
+</html>

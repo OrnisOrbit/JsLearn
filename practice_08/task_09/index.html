@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Animation Sandbox</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('canvas');
+            const w = canvas.width = window.innerWidth;
+            const h = canvas.height = window.innerHeight;
+            setup(canvas.getContext('2d'), w, h);
+        });
+    </script>
+    <script src="/JsLearn/Share_code/stars.js"></script>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        function setup(ctx, w, h) {
+            // TODO: добавить код инициализации
+
+
+            window.requestAnimationFrame(timestamp => draw(ctx, w, h, timestamp));
+        }
+
+        function draw(ctx, w, h, timestamp) {
+            if (w != window.innerWidth || h != window.innerHeight) {
+                w = canvas.width = window.innerWidth;
+                h = canvas.height = window.innerHeight;
+            }
+
+            ctx.fillStyle = 'black';
+            ctx.beginPath();
+            ctx.rect(0, 0, w, h);
+            ctx.fill();
+
+            // TODO: добавить код рисования
+            star(ctx, 20, w / 2, h / 2, 0, 'white', 1);
+            x += 4;
+            window.requestAnimationFrame(timestamp => draw(ctx, w, h, timestamp));
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task_06</title>
+</head>
+
+<body>
+
+
+    <p id="message"></p>
+    <script>
+        const article = `Until recently, Hoan Ton-That’s greatest hits included
+         an obscure iPhone game and an app that let people put Donald Trump’s distinctive 
+         yellow hair on their own photos.
+
+Then Mr. Ton-That — an Australian techie and onetime model — did something momentous: 
+He invented a tool that could end your ability to walk down the street anonymously, 
+and provided it to hundreds of law enforcement agencies, ranging from local cops in Florida to 
+the F.B.I. and the Department of Homeland Security.
+
+His tiny company, Clearview AI, devised a groundbreaking facial recognition app. 
+You take a picture of a person, upload it and get to see public photos of that person, 
+along with links to where those photos appeared. The system — whose backbone is a database 
+of more than three billion images that Clearview claims to have scraped from Facebook, 
+YouTube, Venmo and millions of other websites — goes far beyond anything ever constructed 
+by the United States government or Silicon Valley giants.`.toLowerCase();
+
+
+        const counters = {};
+        const min = "a".charCodeAt(0);
+        const max = "z".charCodeAt(0);
+
+        for (let i = 0; i < article.length; i++) {
+            const character = article[i];
+            const code = character.charCodeAt(0);
+            if (code >= min && code <= max) {
+                if (!counters[character]) {
+                    counters[character] = 1
+                } else {
+                    counters[character]++
+                }
+
+            }
+        }
+        //for of loop
+        let message = "";
+        for (const [letter, count] of Object.entries(counters)) {
+            message += `${letter}: ${count}<br>`;
+        }
+        document.getElementById("message").innerHTML = message;
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

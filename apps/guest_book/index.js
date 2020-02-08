@@ -1,42 +1,55 @@
 const express = require('express');
 const session = require('express-session');
 const server = express();
-const port = 80;
+const mysql = require('mysql2');
 
+require('dotenv').config();
 
-const messages = [];
-let errorMessage;
-
+const port = process.env.PORT;
+const db = mysql.createConnection({
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
+});
 
 server.set('view engine', 'ejs');
-server.use(express.urlencoded({
-    extended: true
-}));
+server.use(express.static('public'));
+server.use(express.urlencoded({ extended: true }));
 server.use(session({
-    secret: 'super keyboard cat'
-
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: true
 }));
 
-server.get('/', (req, response) => {
-    response.render('index', {
-        'messages': messages,
-        'session': req.session
+server.get('/', (request, response) => {
+    db.query('SELECT * FROM messages', (error, results) => {
+        if (error) {
+            console.error(error);
+        }
+
+        response.render('index', {
+            'messages': results,
+            'session': request.session
+        });
     });
 });
 
-server.post('/message/create', (req, response) => {
-    const name = req.body.name;
-    const message = req.body.message;
+server.post('/message/create', async(request, response) => {
+    const name = request.body.name;
+    const message = request.body.message;
     if (name && message) {
-        messages.push({
-            name,
-            message
+        db.query('INSERT INTO messages SET name=?, content=?', [name, message], (error) => {
+            if (error) {
+                console.error(error);
+            }
+            response.redirect('/');
         });
-
     } else {
-        req.session.errorMessage = "Имя или сообщение не могут быть пустыми";
+        request.session.errorMessage = 'Имя или сообщение не могут быть пустыми';
+        response.redirect('/');
     }
-    response.redirect('/');
 });
 
-server.listen(port, () => console.log(`Guestbook listening on port ${port}`));
+server.listen(port, () => console.log(`Guestbook is listening on port ${port}!`));

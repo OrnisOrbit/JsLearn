@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Гостевая книга</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <header>
         <h1>Гостевая книга</h1>
@@ -16,32 +14,28 @@
             <% for (const entry of messages) { %>
                 <div class="message">
                     <strong><%= entry.name %></strong>
-                    <p>
-                        <%= entry.content %>
-                    </p>
+                    <p><%= entry.content %></p>
+                    <em><%= moment(entry.createdAt).format('LLL'); %></em>
                 </div>
-                <% } %>
+            <% } %>
         </section>
-        <% } %>
-            <% if (session.errorMessage) { %>
-                <section class="error">
-                    <p>
-                        <%= session.errorMessage %>
-                    </p>
-                    <% session.errorMessage = undefined; %>
-                </section>
-                <% } %>
-                    <form action="/message/create" method="post">
-                        <label>
+    <% } %>
+    <% if (session.errorMessage) { %>
+        <section class="error">
+            <p><%= session.errorMessage %></p>
+            <% session.errorMessage = undefined; %>
+        </section>
+    <% } %>
+    <form action="/message/create" method="post">
+        <label>
             Ваше имя:<br>
             <input type="text" name="name">
         </label><br>
-                        <label>
+        <label>
             Ваше сообщение:<br>
-            <textarea cols="30" rows="10" name="message"></textarea>
+            <textarea cols="30" rows="10" name="content"></textarea>
         </label><br>
-                        <input type="submit" value="Опубликовать">
-                    </form>
+        <input type="submit" value="Опубликовать">
+    </form>
 </body>
-
 </html>
